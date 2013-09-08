@@ -1,8 +1,7 @@
 require "./selection_sort"
 require "./insertion_sort"
+require "./merge_sort"
 require "test/unit"
-
-# TODO: Stability tests where applicable
 
 module SortTests
   def test_many
@@ -46,5 +45,13 @@ class InsertionSortTest < Test::Unit::TestCase
 
   def create_sort
     InsertionSort.new
+  end
+end
+
+class MergeSortTest < Test::Unit::TestCase
+  include SortTests
+
+  def create_sort
+    MergeSort.new
   end
 end
