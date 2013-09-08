@@ -7,9 +7,8 @@ class SelectionSort
           smallest_index = j
         end
       end
-      temp = input[i]
-      input[i] = input[smallest_index]
-      input[smallest_index] = temp
+
+      input[i], input[smallest_index] = input[smallest_index], input[i]
     end
   end
 end
