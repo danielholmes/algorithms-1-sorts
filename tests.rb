@@ -1,6 +1,7 @@
 require "./selection_sort"
 require "./insertion_sort"
 require "./merge_sort"
+require "./quick_sort"
 require "./bottom_up_merge_sort"
 require "test/unit"
 
@@ -63,5 +64,13 @@ class BottomUpMergeSortTest < Test::Unit::TestCase
 
   def create_sort
     BottomUpMergeSort.new
+  end
+end
+
+class QuickSortTest < Test::Unit::TestCase
+  include SortTests
+
+  def create_sort
+    QuickSort.new
   end
 end
