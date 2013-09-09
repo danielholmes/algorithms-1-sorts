@@ -1,25 +1,25 @@
-class MergeSort
+class BottomUpMergeSort
   def sort(input)
     if input.empty?
       return
     end
+
     aux = Array.new(input.length)
-    sort_portion(input, aux, 0, input.length - 1)
-  end
 
-private
-  def sort_portion(input, aux, from, to)
-    if from == to
-      return
+    partition_size = 1
+    while partition_size < input.length
+      (0...(input.length - partition_size)).step(2 * partition_size) do |from|
+        mid = from + partition_size - 1
+        to = [from + (2 * partition_size) - 1, input.length - 1].min
+
+        merge(input, aux, from, mid, to)
+      end
+
+      partition_size *= 2
     end
-
-    mid = from + ((to - from) / 2).floor
-    sort_portion(input, aux, from, mid)
-    sort_portion(input, aux, mid + 1, to)
-
-    merge(input, aux, from, mid, to)
   end
 
+  private
   def merge(input, aux, from, mid, to)
     for i in from..to
       aux[i] = input[i]
